@@ -31,13 +31,10 @@ public class AppliTestDAL {
 		articleDAO.insert(a3);
 		System.out.println("Article ajouté  : " + a3.toString() );
 
-		//test
-		System.out.println("id de l'article 3 = " + a3.getIdArticle());
-		System.out.println("id de l'article 2 = " + a2.getIdArticle());
 
 		//Sélection de l'article par id
 		Article a = articleDAO.selectById(a2.getIdArticle());
-		System.out.println(a);
+
 		System.out.println("\nSélection de l'article par id  : " + a.toString() );
 		System.out.println(a2.getIdArticle());
 
