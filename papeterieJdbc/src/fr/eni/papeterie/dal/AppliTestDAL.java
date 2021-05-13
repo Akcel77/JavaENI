@@ -63,8 +63,6 @@ public class AppliTestDAL {
 		System.out.println("Liste des articles après suppression : "  );
 		afficherArticles(articles);
 		System.out.println("---------------------------------------------------------------");
-
-
 	}
 
 
