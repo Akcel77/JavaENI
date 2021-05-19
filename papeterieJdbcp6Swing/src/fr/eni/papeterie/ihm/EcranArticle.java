@@ -352,10 +352,7 @@ public class EcranArticle extends JFrame {
     }
 
     //Functions to Controller
-    /**
-     * Afficher un nouvel article, defini ramette comme article par defaut
-     */
-
+    
     /**
      * Affiche un article en fonction de son ID
      * @param article article en cours

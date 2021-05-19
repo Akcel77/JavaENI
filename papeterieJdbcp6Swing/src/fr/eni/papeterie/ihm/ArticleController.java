@@ -71,7 +71,7 @@ public class ArticleController {
             ecranArticle.afficherArticle(articles.get(idxCatalogue));
         }else{
             idxCatalogue = -1;
-//            ecranArticle.afficherNouveau();
+            nouveau();
         }
     }
 
