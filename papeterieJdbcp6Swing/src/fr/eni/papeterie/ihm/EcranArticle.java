@@ -193,6 +193,7 @@ public class EcranArticle extends JFrame {
             rametteRadio.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    getRametteRadio().setEnabled(true);
                     getCheck80().setEnabled(true);
                     getCheck100().setEnabled(true);
                     getCouleurCombo().setEnabled(false);
@@ -212,6 +213,7 @@ public class EcranArticle extends JFrame {
             styloRadio.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    getStyloRadio().setEnabled(true);
                     getCheck80().setEnabled(false);
                     getCheck100().setEnabled(false);
                     getCouleurCombo().setEnabled(true);
@@ -353,12 +355,6 @@ public class EcranArticle extends JFrame {
     /**
      * Afficher un nouvel article, defini ramette comme article par defaut
      */
-    public void afficherNouveau(){
-        Ramette a = new Ramette( "", "", "", 0.0f, 0, 0);
-        getRametteRadio().setEnabled(true);
-        getStyloRadio().setEnabled(true);
-        afficherArticle(a);
-    }
 
     /**
      * Affiche un article en fonction de son ID
@@ -381,7 +377,7 @@ public class EcranArticle extends JFrame {
             getCheck80().setEnabled(false);
             getCheck100().setEnabled(false);
         }//Case Ramette
-        else{
+        if(article.getClass().equals(Ramette.class)){
             getRametteRadio().setSelected(true);
             getCheck80().setEnabled(true);
             getCheck100().setEnabled(true);
