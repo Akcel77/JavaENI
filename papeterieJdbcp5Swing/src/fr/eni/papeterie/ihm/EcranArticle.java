@@ -343,14 +343,6 @@ public class EcranArticle extends JFrame {
         JOptionPane.showMessageDialog(EcranArticle.this, msg, "", JOptionPane.ERROR_MESSAGE);
     }
 
-    //Functions to Controller
-    /**
-     * Afficher un nouvel article, defini ramette comme article par defaut
-     */
-    public void afficherNouveau(){
-        Ramette a = new Ramette( "", "", "", 0.0f, 0, 0);
-        afficherArticle(a);
-    }
 
     /**
      * Affiche un article en fonction de son ID

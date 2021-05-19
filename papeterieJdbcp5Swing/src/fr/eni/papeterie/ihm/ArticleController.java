@@ -3,6 +3,8 @@ package fr.eni.papeterie.ihm;
 import fr.eni.papeterie.bll.BLLException;
 import fr.eni.papeterie.bll.CatalogueManager;
 import fr.eni.papeterie.bo.Article;
+import fr.eni.papeterie.bo.Ramette;
+import fr.eni.papeterie.bo.Stylo;
 import fr.eni.papeterie.ihm.ecrCatalogue.EcranCatalogue;
 
 import javax.swing.*;
@@ -69,7 +71,7 @@ public class ArticleController {
             ecranArticle.afficherArticle(articles.get(idxCatalogue));
         }else{
             idxCatalogue = -1;
-            ecranArticle.afficherNouveau();
+            nouveau();
         }
     }
 
@@ -94,9 +96,16 @@ public class ArticleController {
      * Recupere la taille du catalogue puis affiche le nouvel Article ref afficherNouveau
      */
     public void nouveau(){
+        Article article = null;
+        ecranArticle.getStyloRadio().setEnabled(true);
+        ecranArticle.getRametteRadio().setEnabled(true);
+        if(ecranArticle.getRametteRadio().isSelected()){
 
-        idxCatalogue = articles.size() ;
-        ecranArticle.afficherNouveau();
+            article = new Ramette("","","",0.0f,0,0);
+        }else{
+            article = new Stylo("","","",0.0f,0,"");
+        }
+        ecranArticle.afficherArticle(article);
     }
 
     /**
@@ -107,15 +116,14 @@ public class ArticleController {
     public void enregistrer(){
         Article articleOnScreen = ecranArticle.getArticle();
         try{
-            if(articleOnScreen.getIdArticle()!=null){
+            if(articleOnScreen.getIdArticle()==null){
                 manager.addArticle(articleOnScreen);
                 System.out.println("Article : " + articleOnScreen);
                 articles.add(articleOnScreen);
                 ecranArticle.afficherArticle(articleOnScreen);
             }else{
-                manager.addArticle(articleOnScreen);
+                manager.updateArticle(articleOnScreen);
                 articles.add(articleOnScreen);
-                articles.set(idxCatalogue  , articleOnScreen );
 
 
             }
@@ -145,7 +153,22 @@ public class ArticleController {
             idxCatalogue--;
             ecranArticle.afficherArticle(articles.get(idxCatalogue));
         }else{
-            ecranArticle.afficherNouveau();
+            nouveau();
+            if(idxCatalogue == 0){
+                //1. Create the frame.
+                JFrame frame = new JFrame("ATTENTION");
+
+                //2. Optional: What happens when the frame closes?
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+                //4. Size the frame.
+                frame.pack();
+
+                //5. Show it.
+                frame.setVisible(true);
+                JOptionPane.showMessageDialog(frame, "Aucun article a supprimer");
+            }
         }
     }
 

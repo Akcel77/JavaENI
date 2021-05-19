@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public abstract class Article {
-    protected int idArticle;
+    protected Integer idArticle;
     protected String reference;
     protected String marque;
     protected String designation;
