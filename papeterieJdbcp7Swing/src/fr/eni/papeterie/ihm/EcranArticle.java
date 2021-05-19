@@ -350,15 +350,6 @@ public class EcranArticle extends JFrame {
     }
 
     //Functions to Controller
-    /**
-     * Afficher un nouvel article, defini ramette comme article par defaut
-     */
-    public void afficherNouveau(){
-        Ramette a = new Ramette( "", "", "", 0.0f, 0, 0);
-        getRametteRadio().setEnabled(true);
-        getStyloRadio().setEnabled(true);
-        afficherArticle(a);
-    }
 
     /**
      * Affiche un article en fonction de son ID
